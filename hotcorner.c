@@ -22,10 +22,10 @@
 
 // Hot corner area offsets relative to top left corner of given monitor.
 static const RECT kHotCornerOffsets = {
-    .top    = -20,
-    .left   = -20,
-    .right  = +20,
-    .bottom = +20,
+    .top    = -10,
+    .left   = -10,
+    .right  = +10,
+    .bottom = +10,
 };
 
 #define MAX_MONITORS 10
@@ -42,7 +42,7 @@ static const INPUT kCornerInput[] = {
 };
 
 // How long cursor has to linger in the kHotCorner RECT to trigger input.
-static const DWORD kHotDelay = 300;
+static const DWORD kHotDelay = 200;
 
 // You can exit the application using the hot key CTRL+ALT+C by default, if it
 // interferes with some application you're using (e.g. a full screen game).
@@ -173,7 +173,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     if (!(MouseHook = SetWindowsHookEx(WH_MOUSE_LL, MouseHookCallback, NULL, 0)))
         return 1;
 
-    RegisterHotKey(NULL, 1, kHotKeyModifiers, kHotKey);
+    // RegisterHotKey(NULL, 1, kHotKeyModifiers, kHotKey);
 
     while (GetMessage(&Msg, NULL, 0, 0)) {
         if (Msg.message == WM_HOTKEY) {
